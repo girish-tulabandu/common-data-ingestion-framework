@@ -1,4 +1,4 @@
-#Provenance timestamp usecase
+# Provenance timestamp usecase
 In this use case, we take zip files from local, append provenance timestamp to all the file names and check (count) whether particular zip file contains all the files, if then pass those files to the destination folder.
 
 
