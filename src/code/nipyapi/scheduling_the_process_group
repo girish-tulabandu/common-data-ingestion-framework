@@ -1,0 +1,39 @@
+from nipyapi import canvas
+import time
+import nipyapi
+
+
+def start_PG(pgid):
+    '''
+    This function used to active the process group
+    param pgid: ID of the process process group
+    type pgid: str
+    '''
+    nipyapi.canvas.schedule_process_group(pgid, True)
+
+
+def stop_PG(pgid):
+    '''
+    This function used to deactive the process group
+    param pgid: ID of the process process group
+    type pgid: str
+    '''
+    nipyapi.canvas.schedule_process_group(pgid, False)
+
+
+def main():
+    for queue in nipyapi.canvas.list_all_connections():
+        print("clearing flow files from connection: " + queue.id)
+        if(nipyapi.canvas.purge_connection(queue.id)):
+             print("Successful")
+        else:
+            print("Unsuccessful")
+    start_PG('da0d83ed-016d-1000-07c9-966223a95577')
+    time.sleep(1*60)
+    stop_PG('da0d83ed-016d-1000-07c9-966223a95577')
+                
+            
+if __name__ == "__main__":
+        main()
+
+
