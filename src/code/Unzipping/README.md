@@ -1,9 +1,5 @@
-# Provenance timestamp usecase
-In this use case, we take zip files from local, append provenance timestamp to all the file names and check (count) whether particular zip file contains all the files, if then pass those files to the destination folder.
+# Unzipping files and attaching provenance timestamps
 
-
-UnpackContent processor is used to unzip the files.
-
-ListFile processor gives provenance timestamp as an attribute. This attribute can be used in UpdateAttribute processor to append this provenance timestamp to the filenames.
-
-By using RouteOnAttribute and ExecuteScript processors we can filter files and check the count of the files. In ExecuteScript we write python script to check the count. 
+	By using ListFile processor, we can track provenance timestamp (in our case file.creation time). Unpack content processor is used to unzip the file. For attaching provenance time stamp which we’ve taken from ListFile processor, we’re using updateAttribute processor. In updateAttribute processor we create a property called filename (variable) and provide a value in an expression language.
+${filename:substringBeforeLast('.')}_${file.creationTime}.${filename:substringAfter('.')}
+By using this we can update file name with the timestamp. RoutOnAttribute is used to check for the specific files. And in ExecuteScript we checked whether zip files contains the required count and sent to the respective locations.
