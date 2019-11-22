@@ -1,4 +1,4 @@
-# Converting CSV to PARQUET 
+# Converting CSV to Parquet
 
 For converting CSV to parquet we need schema, so before converting to parquet, we're converting to Avro which gives us schema. Using this schema we can convert to parquet.
 
