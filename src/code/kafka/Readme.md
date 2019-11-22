@@ -1,12 +1,12 @@
-Connection of KAFKA with NIFI usecase
-In this usecase, we are send logfile lines to apache kafka using the kafka producer from nifi, consume the files from kafka and store in the local 
+# Integrating Kafka with NiFi
+In this usecase, we are sending logfile lines to apache kafka using the kafka producer and storing in the local 
 
-TailFile processor fetch the log files
+TailFile processor is used to  fetch the log files
 
-SplitTest processor splite the lines in the logfile as a flowfile
+SplitTest processor split the lines in the logfile as a flowfile
 
-RouteOnContent processor it will search a word if it present it will send to the next processor
+RouteOnContent processor will search a word if it present, if yes, it will send to the next processor
 
-PublishKafka processor work as a kafka producer
+PublishKafka processor works as a kafka producer
 
 ConsumeKafka processor get the flowfiles for every 10 secounds and put it in a single file and send to next processor to store
